@@ -1,0 +1,76 @@
+<!-- Movie details-->
+<a [routerLink]="['../']" class="btn btn-primary" xmlns="http://www.w3.org/1999/html">&lt;Back</a>
+
+<h1>{{movie.title}}</h1>
+<hr>
+<div class="row">
+    <div class="col-sm-4">
+        <img [src]="movie.poster" *ngIf="movie.poster" class="img-responsive" align="center" height="300px" width="300px">
+        <p align="center">{{movie.title}}</p>
+    </div>
+    <div class="col-sm-8">
+        <p>Title: {{movie.title}}</p>
+        <p>Director:{{movie.director}}</p>
+        <p>Actots: {{movie.actors}} </p>
+        <p>Plot: {{movie.plot}} </p>
+        <p>IMDB Rating: {{movie.imdbRating}} </p>
+        <p>IMDB Link:<small> <a href="https://www.imdb.com/title/{{movie.imdbID}}" target="_blank">IMDB Page</a></small></p>
+        <p>Add your Rating here:</p>
+        <div class="rating">
+            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+        </div>
+    </div>
+</div> <br> <br/><!-- end-->
+
+<!--css style for rating -->
+<style>
+.rating {
+unicode-bidi: bidi-override;
+direction: rtl;
+position: absolute;
+}
+.rating > span {
+display: inline-block;
+position: relative;
+width: 1.5em;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+content: "\2605";
+position: absolute;
+}
+</style>
+
+<!--Add Comment -->
+
+<div class="large-16 columns">
+<form method='post'>
+    <fieldset>
+        <legend>Post your comment</legend>
+        <label>
+            <span class="light">Name</span>
+            <div class="field">
+                <input type="text" name="nick" placeholder="Enter name" maxlength="30">
+                <span class="alert label hide" id="error_nick"></span>
+            </div>
+        </label>
+        <br> <br/>
+        <label>
+            <span class="light">Message</span>
+            <div class="field">
+                <textarea placeholder="Enter comment" name="comment" rows="3"></textarea>
+                <span class="alert label hide" id="error_comment"></span>
+            </div>
+        </label>
+    <input type='hidden' name='articleid' id='articleid' value='<? echo $_GET["id"]; ?>' /> <br/>
+
+        <label>
+            <span class="light"></span>
+<span class="alert label hide" id="error_recaptcha"></span>
+</label>
+<label><input type="submit" class="button float-right button" id="postnewcomment" value="Post comment →"></label><style> .button {background-color: cornflowerblue}</style>
+    </fieldset>
+</form>
+    <div class="br15"></div>
+    </div>
+<hr>
